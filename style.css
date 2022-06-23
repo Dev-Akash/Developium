@@ -44,7 +44,7 @@
     -webkit-backdrop-filter: blur(8px) saturate(180%);
     background-color: rgba(0,0,0, 0.1);
     border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.055);
     box-shadow: 10px 3px 8px 10px #00000010;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .section_continer{
-	margin: 0px 15px 0px 15px ;
+	margin: 0px 15px 15px 15px ;
 	flex: 1 0 auto;
 	display: inline-flex;
 	justify-content: space-between;
