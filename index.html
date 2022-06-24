@@ -7,18 +7,18 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
-<body>
+<body onload="getCookieData()">
 	<div class="backdrop">
 		<div class="glass">
 			<div class="header">
-				<input type="text" value="New Board">
+				<input id="board_name" type="text" value="New Board" onchange="saveNameCookie(this.value)">
 				<button>Add Section</button>
 			</div>
 
 			<div class="section_continer">
 				<div class="section">
 					<div class="section_header">
-						<input type="text" value="N1 Section Name">
+						<input id="section0" type="text" value="N1 Section Name" onchange="saveSectionCookie(event)">
 						<button>Add Task</button>
 					</div>
 					<hr style="opacity: 0.5;">
@@ -89,7 +89,7 @@
 				</div>
 				<div class="section">
 					<div class="section_header">
-						<input type="text" value="N2 Section Name">
+						<input id="section1" type="text" value="N2 Section Name" onchange="saveSectionCookie(event)">
 						<button>Add Task</button>
 					</div>
 					<hr style="opacity: 0.5;">
@@ -99,7 +99,7 @@
 				</div>
 				<div class="section">
 					<div class="section_header">
-						<input type="text" value="N3 Section Name">
+						<input id="section2" type="text" value="N3 Section Name" onchange="saveSectionCookie(event)">
 						<button>Add Task</button>
 					</div>
 					<hr style="opacity: 0.5;">
