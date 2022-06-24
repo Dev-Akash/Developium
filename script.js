@@ -49,15 +49,30 @@ function saveSectionCookie(event){
 
 function getCookieData(){
   var boardName = getCookie("BoardName");
-  var sectionData = JSON.parse(getCookie("Sections"));
-  var taskData = JSON.parse(getCookie("Tasks"));
+  if(boardName == ''){
+    boardName = 'New Board'
+    setCookie("BoardName", boardName, 365);
+  }
 
+  var sectionData = getCookie("Sections");
+  if(sectionData == ''){
+    var sectionData = {
+      0: 'Section 1',
+      1: 'Section 2',
+      3: 'Section 3'
+    }
+    setCookie("Sections", JSON.stringify(sectionData), 365);
+  }
+  else{
+    sectionData = JSON.parse(sectionData);
+  }
+  // var taskData = JSON.parse(getCookie("Tasks"));
+  
   document.getElementById("board_name").value = boardName;
   for(let i=0; i<Object.keys(sectionData).length; i++){
     document.getElementById("section"+i).value = sectionData[i];
   }
-  
-  console.log(boardName, sectionData, taskData);
+  console.log(boardName, sectionData);
 }
 
 
