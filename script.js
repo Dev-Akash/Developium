@@ -13,22 +13,7 @@ function drop(ev) {
 }
 
 function saveNameCookie(val){
-  var taskVal = {
-    0: {
-      taskName: "T1",
-      taskDesc: "T1 is a task",
-      isCompleted: false,
-      sectionIndex: 0,
-    },
-    1: {
-      taskName: "T2",
-      taskDesc: "T2 is a task",
-      isCompleted: false,
-      sectionIndex: 2,
-    },
-  }
   setCookie("BoardName", val, 365);
-  setCookie("Tasks", JSON.stringify(taskVal), 365);
 }
 
 function saveSectionCookie(event){
@@ -50,7 +35,7 @@ function getCookieData(){
 
   var sectionData = getCookie("Sections");
   if(sectionData == ''){
-    var sectionData = {
+    sectionData = {
       0: 'Section 1',
       1: 'Section 2',
       2: 'Section 3'
@@ -60,13 +45,49 @@ function getCookieData(){
   else{
     sectionData = JSON.parse(sectionData);
   }
-  // var taskData = JSON.parse(getCookie("Tasks"));
+  var taskData = getCookie("Tasks");
+  if(taskData == ''){
+    taskData = {
+      0: {
+        taskName: "T1",
+        taskDesc: "T1 is a task",
+        isCompleted: false,
+        sectionIndex: 0,
+      },
+      1: {
+        taskName: "T2",
+        taskDesc: "T2 is a task",
+        isCompleted: false,
+        sectionIndex: 1,
+      },
+      2: {
+        taskName: "T3",
+        taskDesc: "T3 is a task",
+        isCompleted: false,
+        sectionIndex: 2
+      }
+    }
+    setCookie("Tasks", JSON.stringify(taskData), 365);
+  }
+  else{
+    taskData = JSON.parse(taskData);
+  }
   
   document.getElementById("board_name").value = boardName;
+
   for(let i=0; i<Object.keys(sectionData).length; i++){
     document.getElementById("section"+i).value = sectionData[i];
   }
-  console.log(boardName, sectionData);
+
+  for(let j=0; j<Object.keys(taskData).length; j++){
+    let t = document.getElementById("task"+j);
+    let h = t.getElementsByClassName('task_header')[0];
+    let inp = h.getElementsByTagName('input')[0];
+    let b = t.getElementsByClassName('task_body')[0];
+    inp.value = taskData[j].taskName;
+    b.innerHTML = taskData[j].taskDesc;
+  }
+  // console.log(boardName, sectionData, taskData);
 }
 
 
