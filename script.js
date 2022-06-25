@@ -1,9 +1,3 @@
-// import Task from "/Task.js";
-
-// var t1 = new Task("name", "desc", false);
-
-// console.log(t1);
-
 function drag(ev) {
 	console.log(ev);
   ev.dataTransfer.setData("item", ev.target.id);
@@ -59,7 +53,7 @@ function getCookieData(){
     var sectionData = {
       0: 'Section 1',
       1: 'Section 2',
-      3: 'Section 3'
+      2: 'Section 3'
     }
     setCookie("Sections", JSON.stringify(sectionData), 365);
   }
